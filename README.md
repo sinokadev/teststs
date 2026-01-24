@@ -1,5 +1,5 @@
 # Teststs
-The Simple, Tiny Test Library for Python
+A Simple, Tiny Test Library for Python
 
 ## Using
 
