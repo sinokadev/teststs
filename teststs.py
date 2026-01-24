@@ -10,24 +10,24 @@ def _run_test(case, func, eq):
     return True, None, None, None, None
 
 def teststs(tests, func, detail=False, failed_stop=True, eq=lambda a, b: a == b):
-   failed = 0
-   failed_case = []
-   for case in tests:
-     ok, args, expected, result, error = _run_test(case, func, eq)
-     if not ok:
-         if detail:
-             print("Test failed")
-             print("input:", args)
-             print("expected:", expected)
-             print("actual:", result)
-             if error:
-                 print("error:", error)
-         else:
-             print("Test failed:", args, result)
-         if failed_stop:
-             return
-         failed += 1
-         failed_case.append((args, expected, result, error))
-   if failed == 0:
-    print("OK!")
-      retrun failed_case
+    failed = 0
+    failed_case = []
+    for case in tests:
+        ok, args, expected, result, error = _run_test(case, func, eq)
+        if not ok:
+            if detail:
+                print("Test failed")
+                print("input:", args)
+                print("expected:", expected)
+                print("actual:", result)
+                if error:
+                    print("error:", error)
+            else:
+                print("Test failed:", args, result)
+            if failed_stop:
+                return
+            failed += 1
+            failed_case.append((args, expected, result, error))
+    if failed == 0:
+        print("OK!")
+    return failed_case
