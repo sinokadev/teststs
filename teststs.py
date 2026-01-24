@@ -10,8 +10,7 @@ def _run_test(case, func, eq):
     return True, None, None, None, None
 
 def teststs(tests, func, detail=False, failed_stop=True, eq=lambda a, b: a == b):
-    failed = 0
-    failed_case = []
+    faileds = []
     for case in tests:
         ok, args, expected, result, error = _run_test(case, func, eq)
         if not ok:
@@ -26,8 +25,7 @@ def teststs(tests, func, detail=False, failed_stop=True, eq=lambda a, b: a == b)
                 print("Test failed:", args, result)
             if failed_stop:
                 return
-            failed += 1
-            failed_case.append((args, expected, result, error))
-    if failed == 0:
+            faileds.append((args, expected, result, error))
+    if len(faileds) == 0:
         print("OK!")
-    return failed_case
+    return faileds
