@@ -20,16 +20,26 @@ def _run_test(case, func, eq):
             error: Exception object if an error occurred, else None.
     """
     *args, expected = case
+
     try:
         result = func(*args)
-    except Exception as error:
+    except Exception as error: # Error Failed
         return False, args, expected, None, error
-    if not eq(result, expected):
+    
+    if not eq(result, expected): # Not Match Failed
         return False, args, expected, result, None
-    return True, None, None, None, None
+    
+    return True, None, None, None, None # OK!
 
 
-def teststs(tests, func, detail=False, failed_stop=True, eq=lambda a, b: a == b):
+def test(
+    tests: tuple[tuple], 
+    func: callable, 
+    detail: bool = False, 
+    failed_stop: bool = True, 
+    eq: callable = 
+    lambda a, b: a == b
+):
     """
     Run multiple test cases and print results.
 
@@ -44,22 +54,32 @@ def teststs(tests, func, detail=False, failed_stop=True, eq=lambda a, b: a == b)
         list: List of failed cases. Each element is a tuple (args, expected, result, error).
               Returns an empty list if all tests pass.
     """
+
     faileds = []
+
     for case in tests:
-        ok, args, expected, result, error = _run_test(case, func, eq)
-        if not ok:
-            faileds.append((args, expected, result, error))
-            if detail:
-                print("Test failed")
-                print("input:", args)
-                print("expected:", expected)
-                print("actual:", result)
-                if error:
-                    print("error:", error)
-            else:
-                print("Test failed:", args, result)
-            if failed_stop:
-                return faileds
+        ok, args, expected, result, error = _run_test(case, func, eq) # Single Test
+
+        if ok:
+            continue
+
+        # Failed
+        faileds.append((args, expected, result, error))
+
+        if not detail: 
+            print("Test failed:", args, result)
+        else: # Detail Log
+            print("Test failed")
+            print("input:", args)
+            print("expected:", expected)
+            print("actual:", result)
+            if error:
+                print("error:", error)
+        
+        if failed_stop:
+            return faileds
+    
     if not faileds:
         print("OK!")
+    
     return faileds
