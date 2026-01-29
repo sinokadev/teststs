@@ -36,6 +36,7 @@ def test(
     tests: tuple[tuple], 
     func: callable, 
     detail: bool = False, 
+    log: bool = True,
     failed_stop: bool = True, 
     eq: callable = 
     lambda a, b: a == b
@@ -47,6 +48,7 @@ def test(
         tests (list of tuples): List of test cases. Each case is (*args, expected).
         func (callable): The function to test.
         detail (bool): If True, prints detailed info for failed tests.
+        log (bool): If True, prints test results; if False, suppresses all output.
         failed_stop (bool): If True, stops after the first failed test.
         eq (callable): Comparison function for results. Default is equality (a == b).
 
@@ -66,6 +68,11 @@ def test(
         # Failed
         faileds.append((args, expected, result, error))
 
+        if not log: # No print
+            if failed_stop: # and failed stop
+                return faileds
+            continue # No failed stop
+        
         if not detail: 
             print("Test failed:", args, result)
         else: # Detail Log
