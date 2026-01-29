@@ -1,6 +1,8 @@
 # Teststs
 A Simple, Tiny Test Library for Python
 
+PyPI: https://pypi.org/project/teststs/
+
 ## Using
 
 ```py
@@ -18,3 +20,7 @@ teststs(tests, add_five, detail=True)
 teststs(tests, add_five, detail=False) # Default
 
 ```
+
+## License
+
+BSD-3-Clause license
