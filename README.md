@@ -24,3 +24,7 @@ teststs(tests, add_five, detail=False) # Default
 ## License
 
 BSD-3-Clause license
+
+## Stars
+
+https://www.star-history.com/#sinokadev/teststs&type=date&legend=top-left
