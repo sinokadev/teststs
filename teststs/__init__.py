@@ -1,3 +1,5 @@
+import sys
+
 def _run_test(case, func, eq):
     """
     Run a single test case (not recommended for direct use).
@@ -94,3 +96,29 @@ def test(
         print("OK!")
     
     return faileds
+
+def action_test(tests: tuple[tuple], func: callable, **kwargs):
+    """
+    A CI-optimized wrapper for the `test` function.
+
+    This function executes the test suite and forces a system exit with code 1 
+    if any test case fails. This ensures that GitHub Actions or other CI tools 
+    properly detect the failure and stop the pipeline.
+
+    Args:
+        tests (tuple[tuple]): A collection of test cases as (*args, expected).
+        func (callable): The function to be tested.
+        **kwargs: Additional keyword arguments passed to the `test` function.
+            Defaults `detail` to True for comprehensive CI logs.
+    """
+    # CI environments benefit from detailed logs to debug failures quickly.
+    kwargs.setdefault('detail', True)
+    
+    faileds = test(tests, func, **kwargs)
+    
+    if faileds:
+        print(f"\n[CI] Test Failed: A total of {len(faileds)} cases failed.")
+        sys.exit(1)  # Signal failure to the CI environment
+    
+    print("\n[CI] All tests passed!")
+    # No need for sys.exit(0) as Python exits with 0 by default.
