@@ -34,7 +34,7 @@ def _run_test(case, func, eq):
     return True, None, None, None, None # OK!
 
 
-def test(
+def teststs(
     tests: tuple[tuple], 
     func: callable, 
     detail: bool = False, 
