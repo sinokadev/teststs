@@ -26,8 +26,9 @@ tests = [
 
 teststs(tests, add_five, detail=True)
 teststs(tests, add_five, detail=False) # Default
-
 ```
+
+If you want more usage, check out Docstring
 
 ## License
 
