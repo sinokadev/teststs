@@ -1,5 +1,7 @@
 # Teststs
 [![PyPI Downloads](https://static.pepy.tech/personalized-badge/teststs?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/teststs)
+![PyPI - Version](https://img.shields.io/pypi/v/teststs)
+![PyPI - License](https://img.shields.io/pypi/l/teststs)
 
 No Classes, No Boilerplate, Use teststs
 
