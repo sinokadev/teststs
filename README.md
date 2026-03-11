@@ -1,7 +1,7 @@
 # Teststs
 [![PyPI Downloads](https://static.pepy.tech/personalized-badge/teststs?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/teststs)
 
-A Simple, Tiny Test Library for Python
+No Classes, No Boilerplate, Use teststs
 
 ```bash
 pip install teststs
