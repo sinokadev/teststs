@@ -114,7 +114,7 @@ def action_test(tests: tuple[tuple], func: callable, **kwargs):
     # CI environments benefit from detailed logs to debug failures quickly.
     kwargs.setdefault('detail', True)
     
-    faileds = test(tests, func, **kwargs)
+    faileds = teststs(tests, func, **kwargs)
     
     if faileds:
         print(f"\n[CI] Test Failed: A total of {len(faileds)} cases failed.")
