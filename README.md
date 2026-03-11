@@ -3,6 +3,10 @@
 
 A Simple, Tiny Test Library for Python
 
+```bash
+pip install teststs
+```
+
 PyPI: https://pypi.org/project/teststs/
 
 ## Using
